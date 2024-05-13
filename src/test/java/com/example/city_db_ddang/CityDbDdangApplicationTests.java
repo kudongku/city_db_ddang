@@ -2,6 +2,8 @@ package com.example.city_db_ddang;
 
 import com.example.city_db_ddang.repository.AdminDistrictRepository;
 import com.example.city_db_ddang.service.ExcelReadService;
+import com.example.city_db_ddang.service.TownService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ class CityDbDdangApplicationTests {
 
     @Autowired
     AdminDistrictRepository adminDistrictRepository;
+
+    @Autowired
+    TownService townService;
 
     @Test
     void contextLoads() {
@@ -26,6 +31,14 @@ class CityDbDdangApplicationTests {
         ExcelReadService excelReadService = new ExcelReadService(adminDistrictRepository);
         //when,then
         excelReadService.createAdminDistrict();
+    }
+
+    @Test
+    @Rollback(false)
+    @DisplayName("town DB에 저장")
+    void saveTownDB() throws JsonProcessingException {
+        //given, when, then
+        townService.createTown();
     }
 
 }
