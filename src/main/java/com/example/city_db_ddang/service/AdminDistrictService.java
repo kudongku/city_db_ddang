@@ -16,11 +16,11 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Slf4j(topic = "ExcelReadService")
+@Slf4j(topic = "AdminDistrictService")
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class ExcelReadService {
+public class AdminDistrictService {
 
     private final static String excelDirectory = "src/main/resources/AdminDistrictExcel.xlsx";
 
