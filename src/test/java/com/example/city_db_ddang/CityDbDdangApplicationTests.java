@@ -1,6 +1,5 @@
 package com.example.city_db_ddang;
 
-import com.example.city_db_ddang.repository.AdminDistrictRepository;
 import com.example.city_db_ddang.service.AdminDistrictService;
 import com.example.city_db_ddang.service.TownService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -18,29 +17,22 @@ import org.springframework.test.annotation.Rollback;
 class CityDbDdangApplicationTests {
 
     @Autowired
-    AdminDistrictRepository adminDistrictRepository;
+    TownService townService;
 
     @Autowired
-    TownService townService;
+    AdminDistrictService adminDistrictService;
 
     @Test
     @Order(1)
-    void contextLoads() {
-    }
-
-    @Test
-    @Order(2)
     @Rollback(false)
     @DisplayName("townList 엑셀 파일 DB에 저장")
     void saveTownListDB() {
-        //given
-        AdminDistrictService adminDistrictService = new AdminDistrictService(adminDistrictRepository);
-        //when,then
+        //given, when,then
         adminDistrictService.createAdminDistrict();
     }
 
     @Test
-    @Order(3)
+    @Order(2)
     @Rollback(false)
     @DisplayName("town DB에 저장")
     void saveTownDB() throws JsonProcessingException {
